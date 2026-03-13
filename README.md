@@ -7,8 +7,8 @@ CLI-Anything: Bridging the Gap Between AI Agents and the World's Software</stron
 
 <p align="center">
   <a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-5_min-blue?style=for-the-badge" alt="Quick Start"></a>
-  <a href="#-demonstrations"><img src="https://img.shields.io/badge/Demos-11_Apps-green?style=for-the-badge" alt="Demos"></a>
-  <a href="#-test-results"><img src="https://img.shields.io/badge/Tests-1%2C508_Passing-brightgreen?style=for-the-badge" alt="Tests"></a>
+  <a href="#-demonstrations"><img src="https://img.shields.io/badge/Demos-12_Apps-green?style=for-the-badge" alt="Demos"></a>
+  <a href="#-test-results"><img src="https://img.shields.io/badge/Tests-1%2C545_Passing-brightgreen?style=for-the-badge" alt="Tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License"></a>
 </p>
 
@@ -257,6 +257,50 @@ cli-anything-gimp
 
 ---
 
+## 🚀 Using CLI-Anything with Your Own Repositories
+
+Yes — CLI-Anything works with **any** GitHub repository, including your own projects.  The
+QRcoder example in this repo (`qrcoder/agent-harness/`) was built directly from
+[JeffreyLebowsk1/QRcoder-v1](https://github.com/JeffreyLebowsk1/QRcoder-v1) using the
+standard harness methodology.
+
+### Quick recipe for any repo
+
+```bash
+# Step 1 — generate the harness (Claude Code, OpenCode, or Codex)
+/cli-anything https://github.com/<you>/<your-repo>
+
+# Step 2 — install and use
+cd <your-repo>/agent-harness
+pip install -e .
+cli-anything-<your-repo> --help
+```
+
+### Example: repos that already work with CLI-Anything
+
+| Repo | Generated CLI | Notes |
+|------|--------------|-------|
+| [JeffreyLebowsk1/QRcoder-v1](https://github.com/JeffreyLebowsk1/QRcoder-v1) | `cli-anything-qrcoder` | Included in this repo under `qrcoder/agent-harness/` |
+| `worker` (private) | `cli-anything-worker` | Run `/cli-anything <path-to-worker>` when accessible |
+| `urban-invention` (private) | `cli-anything-urban-invention` | Run `/cli-anything <path-to-urban-invention>` when accessible |
+
+For **private repositories**, check them out locally and point the tool at the
+local path:
+
+```bash
+# Private repo — check out locally first
+git clone https://github.com/<you>/worker ~/repos/worker
+/cli-anything ~/repos/worker
+
+git clone https://github.com/<you>/urban-invention ~/repos/urban-invention
+/cli-anything ~/repos/urban-invention
+```
+
+The 7-phase pipeline analyses any codebase and produces a full CLI regardless
+of whether the repo is public or private.
+
+---
+
 ## 🔧 When to Use CLI-Anything
 
 | Category | How to be Agent-native | Notable Examples |
@@ -470,12 +514,19 @@ Each application received complete, production-ready CLI interfaces — not demo
 <td align="center">✅ 50</td>
 </tr>
 <tr>
+<td align="center"><strong>🔳 QRcoder</strong></td>
+<td>QR Code Generation</td>
+<td><code>cli-anything-qrcoder</code></td>
+<td>qrcode + Pillow (Python-native)</td>
+<td align="center">✅ 37</td>
+</tr>
+<tr>
 <td align="center" colspan="4"><strong>Total</strong></td>
-<td align="center"><strong>✅ 1,508</strong></td>
+<td align="center"><strong>✅ 1,545</strong></td>
 </tr>
 </table>
 
-> **100% pass rate** across all 1,508 tests — 1,073 unit tests + 435 end-to-end tests.
+> **100% pass rate** across all 1,545 tests — 1,110 unit tests + 435 end-to-end tests.
 
 ---
 
@@ -503,8 +554,9 @@ shotcut       154 passed  ✅   (110 unit + 44 e2e)
 zoom           22 passed  ✅   (22 unit + 0 e2e)
 drawio        138 passed  ✅   (116 unit + 22 e2e)
 anygen         50 passed  ✅   (40 unit + 10 e2e)
+qrcoder        37 passed  ✅   (37 unit + 0 e2e)
 ──────────────────────────────────────────────────────────────────────────────
-TOTAL        1,508 passed  ✅   100% pass rate
+TOTAL        1,545 passed  ✅   100% pass rate
 ```
 
 ---
@@ -563,7 +615,8 @@ cli-anything/
 ├── 🎬 shotcut/agent-harness/            # Shotcut CLI (154 tests)
 ├── 📞 zoom/agent-harness/               # Zoom CLI (22 tests)
 ├── 📐 drawio/agent-harness/             # Draw.io CLI (138 tests)
-└── ✨ anygen/agent-harness/             # AnyGen CLI (50 tests)
+├── ✨ anygen/agent-harness/             # AnyGen CLI (50 tests)
+└── 🔳 qrcoder/agent-harness/           # QRcoder CLI (37 tests) — JeffreyLebowsk1/QRcoder-v1
 ```
 
 Each `agent-harness/` contains an installable Python package under `cli_anything.<software>/` with Click CLI, core modules, utils (including `repl_skin.py` and backend wrapper), and comprehensive tests.
@@ -789,7 +842,7 @@ MIT License — free to use, modify, and distribute.
 
 **CLI-Anything** — *Make any software with a codebase Agent-native.*
 
-<sub>A methodology for the age of AI agents | 11 professional software demos | 1,508 passing tests</sub>
+<sub>A methodology for the age of AI agents | 12 professional software demos | 1,545 passing tests</sub>
 
 <br>
 
